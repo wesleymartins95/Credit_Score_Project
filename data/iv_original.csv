@@ -1,0 +1,11 @@
+﻿Feature,IV,Classificação
+utilizacao_credito,1.1192479779846698,⚡ Muito forte
+dependentes,0.48134986920014455,🌟 Forte
+atrasos_30dias,0.46997630069830076,🌟 Forte
+idade,0.25617734637985967,✅ Médio
+renda_mensal,0.08091942818865162,⚠️ Fraco
+divida_ratio,0.07324372970250051,⚠️ Fraco
+linhas_credito_abertas,0.07203406678891244,⚠️ Fraco
+comprometimento_renda,0.0328435987993684,⚠️ Fraco
+emprestimos_imobiliarioss,0.012315428411603883,❌ Sem poder preditivo
+atrasos_90dias,0.0,❌ Sem poder preditivo
