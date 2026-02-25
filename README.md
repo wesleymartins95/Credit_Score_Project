@@ -46,8 +46,8 @@ credit-scoring-analysis/
 │
 ├── notebooks/
 │   ├── 01_data_exploration.ipynb      # ✅ EDA
-│   ├── 02_data_preprocessing.ipynb    # 🔄 Em andamento
-│   ├── 03_feature_engineering.ipynb   # 📅 Próximo
+│   ├── 02_data_preprocessing.ipynb    # ✅ Em andamento
+│   ├── 03_feature_engineering.ipynb   # ✅ Próximo
 │   └── 04_modeling.ipynb              # 📅 Planejado
 │
 ├── src/
@@ -121,8 +121,8 @@ jupyter notebook
 
 - [x] Setup do ambiente
 - [x] Análise exploratória (EDA)
-- [ ] Pré-processamento de dados
-- [ ] Feature engineering
+- [x] Pré-processamento de dados
+- [x] Feature engineering
 - [ ] Modelagem
 - [ ] Avaliação e otimização
 - [ ] Dashboard interativo
@@ -132,9 +132,33 @@ jupyter notebook
 
 ## 💡 Principais Insights (Até Agora)
 
-1. **Desbalanceamento de classes:** 6,7% inadimplentes vs XX% bons pagadores
-2. **Variáveis mais correlacionadas:** - [atrasos_30dias - atrasos_90dias - dependentes]
+1. **Desbalanceamento de classes:** 6,7% inadimplentes vs 93,3% bons pagadores.- **Ação:** Aplicar SMOTE na modelagem
+2. **Variáveis mais correlacionadas com Inadimplência:** - [atrasos_30dias - atrasos_90dias - dependentes]
 3. **Dados faltantes:** [comprometimento_renda	29749	19.83% - renda_mensal	29731	19.82% - faixa_etaria	688	0.46% - utilizacao_credito	114	0.08% - divida_ratio	18	0.01% ] colunas requerem tratamento
+4. **Variáveis com Maior Poder Preditivo (IV > 0.3)**
+- `[Utilização de crédito]`: IV = 1,12 - [Continua sendo o principal discriminador de risco, clientes que usam crédito de forma intensa têm padrões distintos de inadimplência. Decisão: deve ser o pilar central do score.]
+- `[Dependentes]`: IV = 0,48 - [Forte poder discriminatório, maior número de dependentes pressiona orçamento familiar e aumenta risco.
+Decisão: incluir como variável-chave, possivelmente ajustada por renda.]
+- `[Atrasos em 30 dias]`: IV = 0,47 - [Forte preditor de inadimplência, histórico de atraso é altamente indicativo de risco futuro.
+Decisão: manter como variável crítica no score.]
+
+#### 2. Tratamento de Dados
+- **Colunas removidas por excesso de missing (>50%):**
+- `Renda mensal e Comprometimento da renda apresentavam cerca de 20% de valores faltantes, mas não chegaram a 50%.Portanto, nenhuma coluna foi removida por excesso de missing.`
+`(Insight: o dataset manteve todas as variáveis originais, mas com imputação e flags para monitorar qualidade.)`
+
+- **Valores imputados usando mediana:**
+- `Renda mensal → imputada pela mediana segmentada por faixa etária.`
+- `Comprometimento da renda → imputada pela mediana segmentada.`
+- `Faixa etária → imputada em casos raros (~0,4%).`
+`(Insight: imputação recuperou variáveis antes inutilizáveis, como renda mensal, que ganhou relevância pós-limpeza – IV subiu de 0,08 → 0,12.)`
+
+- **Outliers identificados (mantidos para avaliação):**
+- `Idade → valores fora de [18–90] truncados e sinalizados com idade_outlier_flag.`
+- `Renda mensal → valores acima de R$ 50.000 truncados e sinalizados com renda_outlier_flag.`
+- `Comprometimento da renda → valores acima de 100% truncados e sinalizados com comprometimento_outlier_flag.`
+`(Insight: flags não discriminam risco isoladamente (IV ≈ 0), mas são úteis para governança e podem ser exploradas em interações.)`
+
 
 
 ---
