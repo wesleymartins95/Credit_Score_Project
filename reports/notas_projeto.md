@@ -7,27 +7,9 @@ Desenvolver modelo de credit scoring para a Quod com foco em:
 - Insights acionáveis
 
 ## 📅 Timeline
-- Início: [data]
-- Prazo: [data]
-- Status: Semana 2/5
-
-## ✅ Decisões Tomadas
-
-### Tratamento de Dados
-1. **Missing Values:**
-   - Colunas com >50% missing: removidas
-   - Numéricas: imputação pela mediana,# 📝 Notas do Projeto
-
-## 🎯 Objetivo
-Desenvolver modelo de credit scoring para a Quod com foco em:
-- Predição de inadimplência
-- Identificação de fatores de risco
-- Insights acionáveis
-
-## 📅 Timeline
 - Início: [09/02/2026]
 - Recesso Carnaval: [14/02/2026 a 18/02/2026]
-- Prazo: [04/03/2026]
+- Prazo: [06/03/2026]
 - Status: Semana 3/5
 
 ## ✅ Decisões Tomadas
@@ -68,3 +50,7 @@ Isso é até mais robusto do que usar moda, porque evita mascarar o missing e pe
 - Kaggle Competition: Give Me Some Credit
 - Documentação sklearn: https://...
 - Papers sobre credit scoring: [links]
+
+
+
+

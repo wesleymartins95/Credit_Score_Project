@@ -119,13 +119,32 @@ jupyter notebook
 
 ## 📈 Progresso do Projeto
 
-- [x] Setup do ambiente
-- [x] Análise exploratória (EDA)
-- [x] Pré-processamento de dados
-- [x] Feature engineering
-- [ ] Modelagem
-- [ ] Avaliação e otimização
-- [ ] Dashboard interativo
+## ✅ Checklist de Progresso
+
+### Semana 1-2: Preparação e EDA
+- [x] Setup do projeto
+- [x] Análise exploratória inicial
+- [x] Análise bivariada
+- [x] Information Value
+- [x] Limpeza de dados
+- [x] Documentação
+
+### Semana 3: Feature Engineering (Próxima)
+- [ ] Criar features derivadas
+- [ ] Encoding de categóricas
+- [ ] Scaling/normalização
+- [ ] Seleção de features
+- [ ] Train/test split
+
+### Semana 4: Modelagem
+- [ ] Baseline model
+- [ ] Modelos avançados
+- [ ] Otimização
+- [ ] Avaliação
+
+### Semana 5: Entrega
+- [ ] Dashboard
+- [ ] Apresentação
 - [ ] Documentação final
 
 ---
