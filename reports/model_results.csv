@@ -1,0 +1,2 @@
+model_name,train_accuracy,train_f1,train_auc,test_accuracy,test_f1,test_auc,optimal_threshold,n_features
+Logistic Regression (Baseline),0.9331166709943294,0.023480494068729364,0.7104759512040582,0.9335946661305994,0.035053554040895815,0.7184258998318973,0.1,28
