@@ -1,0 +1,69 @@
+
+================================================================================
+PREPARAÇÃO FINAL DOS DADOS - DOCUMENTAÇÃO
+================================================================================
+
+Data: 2026-03-03 15:20:07
+
+================================================================================
+1. TRAIN/TEST SPLIT
+================================================================================
+
+Configuração:
+- Test Size: 20%
+- Random State: 42
+- Stratified: Sim
+
+Distribuição Original:
+      Versão Train_Original_Shape Train_Balanced_Shape  Test_Shape  Train_Bom_Original  Train_Mau_Original  Train_Bom_Balanced  Train_Mau_Balanced  Test_Bom  Test_Mau
+    no_scale         (119387, 28)         (222762, 28) (29847, 28)              111381                8006              111381              111381     27845      2002
+standardized         (119387, 28)         (222762, 28) (29847, 28)              111381                8006              111381              111381     27845      2002
+  normalized         (119387, 28)         (222762, 28) (29847, 28)              111381                8006              111381              111381     27845      2002
+
+================================================================================
+2. BALANCEAMENTO (SMOTE)
+================================================================================
+
+Método: SMOTE (Synthetic Minority Over-sampling Technique)
+Aplicado: Apenas no conjunto de TREINO
+Motivo: Evitar data leakage
+
+Resultado:
+- Classes perfeitamente balanceadas (50/50)
+- Aumento sintético da classe minoritária (inadimplentes)
+
+================================================================================
+3. ARQUIVOS GERADOS
+================================================================================
+
+Para cada versão (no_scale, standardized, normalized):
+
+1. [versão]_train_original.csv   - Treino desbalanceado (original)
+2. [versão]_train_balanced.csv   - Treino balanceado (com SMOTE)
+3. [versão]_test.csv             - Teste (sempre original)
+
+Uso Recomendado:
+- Treinar modelos: usar train_balanced
+- Avaliar modelos: usar test (sempre!)
+- Comparações: usar train_original se necessário
+
+================================================================================
+4. PRÓXIMOS PASSOS
+================================================================================
+
+✅ PRONTO PARA MODELAGEM!
+
+Modelos Sugeridos:
+1. Logistic Regression (baseline) → usar standardized
+2. Random Forest              → usar no_scale
+3. XGBoost/LightGBM          → usar no_scale
+4. Neural Network            → usar normalized
+
+Métricas de Avaliação:
+- AUC-ROC
+- Precision/Recall
+- F1-Score
+- Confusion Matrix
+- KS Statistic
+
+================================================================================

@@ -1,0 +1,4 @@
+Versão,Train_Original_Shape,Train_Balanced_Shape,Test_Shape,Train_Bom_Original,Train_Mau_Original,Train_Bom_Balanced,Train_Mau_Balanced,Test_Bom,Test_Mau
+no_scale,"(119387, 28)","(222762, 28)","(29847, 28)",111381,8006,111381,111381,27845,2002
+standardized,"(119387, 28)","(222762, 28)","(29847, 28)",111381,8006,111381,111381,27845,2002
+normalized,"(119387, 28)","(222762, 28)","(29847, 28)",111381,8006,111381,111381,27845,2002

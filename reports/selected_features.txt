@@ -1,0 +1,40 @@
+================================================================================
+FEATURES SELECIONADAS PARA MODELAGEM
+================================================================================
+
+Total: 28 features
+Métodos usados: Random Forest, Mutual Information, RFE
+Critério: Features com 2+ votos
+
+================================================================================
+LISTA DE FEATURES
+================================================================================
+
+  1. utilizacao_credito                                 (3 votos)
+  2. indice_severidade_atrasos                          (3 votos)
+  3. alta_utilizacao_flag                               (3 votos)
+  4. renda_per_capita                                   (3 votos)
+  5. baixa_renda_por_pessoa                             (3 votos)
+  6. idade                                              (3 votos)
+  7. utilizacao_media_linha                             (3 votos)
+  8. renda_disponivel                                   (3 votos)
+  9. comprometimento_renda_ajustado                     (3 votos)
+ 10. renda_mensal                                       (3 votos)
+ 11. linhas_credito_abertas                             (3 votos)
+ 12. divida_ratio                                       (3 votos)
+ 13. utilizacao_credito_bin                             (3 votos)
+ 14. interacao_idade_renda                              (3 votos)
+ 15. interacao_divida_linhas                            (3 votos)
+ 16. pressao_dependentes_renda                          (3 votos)
+ 17. idade_quadrado                                     (3 votos)
+ 18. log_renda_mensal                                   (3 votos)
+ 19. utilizacao_credito_quadrado                        (3 votos)
+ 20. score_interno                                      (3 votos)
+ 21. flag_possui_imovel                                 (2 votos)
+ 22. flag_thin_file                                     (2 votos)
+ 23. renda_mensal_missing                               (2 votos)
+ 24. estabilidade_financeira                            (2 votos)
+ 25. flag_cliente_estavel                               (2 votos)
+ 26. flag_alto_risco                                    (2 votos)
+ 27. comprometimento_outlier_flag                       (2 votos)
+ 28. emprestimos_imobiliarioss                          (2 votos)
