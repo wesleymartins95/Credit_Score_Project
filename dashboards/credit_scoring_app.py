@@ -40,26 +40,40 @@ def load_data():
     return test_df, results_df
 
 
-
-@st.cache_resource
-def load_model():
-    import requests, joblib
-    from io import BytesIO
-
-    # Link direto do Google Drive
-    url = "https://drive.google.com/drive/folders/1vRtm4CJWo5oDrsMn002yso07RJcSTvnv?usp=drive_link"
+# Função genérica para baixar e carregar arquivos .pkl do Google Drive
+def load_from_drive(file_id, name):
+    url = f"https://drive.google.com/uc?id={file_id}"
     response = requests.get(url)
     response.raise_for_status()
+    obj = joblib.load(BytesIO(response.content))
+    return obj, name
 
-    # Carregar modelo a partir do conteúdo baixado
-    model = joblib.load(BytesIO(response.content))
-    model_name = "xgboost.pkl"
-    return model, model_name
+@st.cache_resource
+def load_all_models():
+    files = {
+        "xgboost.pkl": "1YY2rI1lpuyBZ9IJ5yymENjcP26J89dqA",
+        "lightgbm.pkl": "1UJEWaVwzJlw4h2g-v1mVvE1Cj05vVjZQ",
+        "log_reg.pkl": "1lCnFQDa7uD05n9j73NQN-c3X9D3_s5d4",
+        "log_reg_pipeline.pkl": "1XOuB8YbzbCiIILmZTGGGED0JXPFEn501",
+        "df_woe.pkl": "1N4zteAuLjqxzfc3dcpyLuEcZkJUUGqlW",
+        "woe_comprometimento_renda.pkl": "1yYE9k7ejuumKOcCJi9wUdArvBv6QNoAt"
+    }
 
+    models = {}
+    for name, fid in files.items():
+        obj, _ = load_from_drive(fid, name)
+        models[name] = obj
 
+    return models
 
+# Uso no app
 test_df, results_df = load_data()
-model, model_name = load_model()
+models = load_all_models()
+
+# Exemplo: acessar o modelo XGBoost
+model = models["xgboost.pkl"]
+model_name = "xgboost.pkl"
+
 
 # Variáveis principais
 target_col = 'inadipl_90dias_ult2anos'
