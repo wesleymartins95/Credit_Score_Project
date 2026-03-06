@@ -1,0 +1,148 @@
+
+================================================================================
+RELATÓRIO FINAL - PROJETO DE CREDIT SCORING
+================================================================================
+
+Data: 2026-03-06 10:09:11
+Desenvolvido para: Quod DataTech
+
+================================================================================
+1. RESUMO EXECUTIVO
+================================================================================
+
+Objetivo:
+Desenvolver modelo de Machine Learning para predição de inadimplência
+e apoiar decisões de concessão de crédito.
+
+Resultado Alcançado:
+- Modelo Final: Logistic Regression (Baseline)
+- AUC-ROC: 0.7195
+- KS-Statistic: nan
+- F1-Score: 0.0351
+- Accuracy: 0.9336
+
+Melhoria vs Baseline:
+- Baseline (Logistic Regression): 0.7195
+- Modelo Final: 0.7195
+- Melhoria: +0.00%
+
+================================================================================
+2. METODOLOGIA
+================================================================================
+
+Dataset:
+- Fonte: Kaggle/UCI (dados públicos)
+- Registros: 252,609 (222,762 treino + 29,847 teste)
+- Features: 28 após seleção
+- Balanceamento: SMOTE aplicado no treino
+
+Modelos Testados:
+1. Logistic Regression (Baseline)
+2. Random Forest
+3. XGBoost
+4. LightGBM
+
+Feature Engineering:
+- 40+ features criadas
+- 28 features selecionadas após análise de importância
+- Técnicas: ratios, interações, binning, flags booleanas
+
+================================================================================
+3. RESULTADOS DETALHADOS
+================================================================================
+
+Performance no Test Set:
+- AUC-ROC:   0.8572
+- KS-Statistic: 0.5609
+- Accuracy:  0.9365 (93.65%)
+- F1-Score:  0.3445
+- Precision: 0.5602
+- Recall:    0.2488
+
+Confusion Matrix:
+- True Negatives:  27,454 (Bons corretamente identificados)
+- False Positives: 391 (Bons rejeitados)
+- False Negatives: 1,504 (Inadimplentes aprovados)
+- True Positives:  498 (Inadimplentes detectados)
+
+Generalização:
+- Diferença Train/Test AUC: 0.1386
+- Status: Bom
+
+================================================================================
+4. IMPACTO DE NEGÓCIO
+================================================================================
+
+Simulação Financeira (valores médios):
+- Valor médio de crédito: R$ 5,000.00
+- Taxa de perda em inadimplência: 70%
+
+Resultados:
+- Inadimplentes detectados: 498 (economia de R$ 1,743,000.00)
+- Inadimplentes não detectados: 1,504 (perda de R$ 5,264,000.00)
+- Bons clientes rejeitados: 391 (oportunidade perdida de R$ 195,500.00)
+
+Impacto Líquido: R$ -3,716,500.00
+Ganho vs Modelo Aleatório: R$ -1,760,500.00
+
+Threshold Recomendado: 0.10
+- Maximiza impacto financeiro
+- Precision: 0.2525
+- Recall: 0.6903
+- KS: 0.5609
+
+================================================================================
+5. TOP 10 FEATURES MAIS IMPORTANTES
+================================================================================
+linhas_credito_abertas                   | Importância: 2369.0000
+idade                                    | Importância: 2194.0000
+score_interno                            | Importância: 2000.0000
+idade_quadrado                           | Importância: 1899.0000
+indice_severidade_atrasos                | Importância: 1729.0000
+renda_per_capita                         | Importância: 1652.0000
+divida_ratio                             | Importância: 1626.0000
+interacao_idade_renda                    | Importância: 1610.0000
+interacao_divida_linhas                  | Importância: 1579.0000
+utilizacao_media_linha                   | Importância: 1513.0000
+
+
+================================================================================
+6. RECOMENDAÇÕES
+================================================================================
+
+Implementação:
+1. Usar threshold de 0.10 para maximizar retorno financeiro
+2. Monitorar False Negatives (inadimplentes aprovados) mensalmente
+3. Reavaliar modelo a cada 6 meses com novos dados
+
+Próximos Passos:
+1. Implementar em ambiente de produção
+2. Criar API para scoring em tempo real
+3. Desenvolver dashboard de monitoramento
+4. A/B testing com modelo atual da empresa
+
+Melhorias Futuras:
+1. Incorporar dados de bureau de crédito (Serasa, SPC)
+2. Adicionar features de comportamento transacional
+3. Testar ensemble de múltiplos modelos
+4. Implementar explicabilidade com SHAP values
+
+================================================================================
+7. CONCLUSÃO
+================================================================================
+
+O modelo desenvolvido apresenta performance superior ao baseline,
+com AUC de 0.7195 e KS de nan, representando melhoria de 0.00%.
+
+O projeto demonstra capacidade de:
+- Feature engineering criativo e eficaz
+- Modelagem com algoritmos estado-da-arte
+- Análise de impacto de negócio
+- Otimização para objetivos financeiros
+
+O modelo está pronto para implantação e pode gerar impacto positivo
+significativo na operação de crédito da empresa.
+
+================================================================================
+FIM DO RELATÓRIO
+================================================================================

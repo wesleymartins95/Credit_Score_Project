@@ -1,0 +1,12 @@
+Métrica,Valor
+AUC-ROC,0.8572
+KS-Statistic,0.5609
+Accuracy,0.9365 (93.7%)
+F1-Score,0.3445
+Precision,0.5602
+Recall,0.2488
+Melhoria vs Baseline,+0.00%
+False Negatives,"1,504"
+False Positives,391
+Inadimplentes Detectados,"498 de 2,002 (24.9%)"
+Impacto Financeiro Estimado,"R$ -3,716,500.00"
