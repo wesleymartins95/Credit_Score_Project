@@ -47,34 +47,23 @@ def load_model():
     import joblib
     from io import BytesIO
 
-    files = {
-        "xgboost.pkl": "1YY2rI1lpuyBZ9IJ5yymENjcP26J89dqA",
-        "lightgbm.pkl": "1UJEWaVwzJlw4h2g-v1mVvE1Cj05jVjZQ",
-        "log_reg.pkl": "1lCnFQDa7uD05n9j73NQN-c3X9D3_s5d4",
-        "log_reg_pipeline.pkl": "1XOuB8YbzbCiIILmZTGGGED0JXPFEn501",
-        "df_woe.pkl": "1N4zteAuLjqxzfc3dcpyLuEcZkJUUGqlW",
-        "woe_comprometimento_renda.pkl": "1yYE9k7ejuumKOcCJi9wUdArvBv6QNoAt"
-    }
+    file_id = "1yYE9k7ejuumKOcCJi9wUdArvBv6QNoAt"
+    url = f"https://drive.google.com/uc?export=download&id={file_id}"
 
-    models = {}
+    response = requests.get(url)
 
-    for name, fid in files.items():
+    if response.status_code != 200:
+        st.error("Erro ao baixar o modelo xgboost.pkl")
+        st.stop()
 
-        url = f"https://drive.google.com/uc?export=download&id={fid}"
+    model = joblib.load(BytesIO(response.content))
 
-        response = requests.get(url)
+    return model
 
-        if response.status_code != 200:
-            st.error(f"Erro ao baixar {name}")
-            st.stop()
-
-        models[name] = joblib.load(BytesIO(response.content))
-
-    return models
 
 # Uso no app
 test_df, results_df = load_data()
-models = load_model()
+model = load_model()
 
 
 # Variáveis principais
