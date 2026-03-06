@@ -1,7 +1,7 @@
 """
 Credit Scoring Dashboard
 Aplicação Streamlit para análise e predição de crédito
-Desenvolvido para: Quod DataTech
+Desenvolvido para Quod DataTech
 """
 
 import streamlit as st
