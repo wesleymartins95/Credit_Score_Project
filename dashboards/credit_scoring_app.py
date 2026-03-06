@@ -43,11 +43,19 @@ def load_data():
 
 @st.cache_resource
 def load_model():
-    # Caminho absoluto para o modelo
-    model_path = r"C:\Users\wesle\anaconda3\envs\Credit_Score_Project\models\xgboost.pkl"
-    model = joblib.load(model_path)
+    import requests, joblib
+    from io import BytesIO
+
+    # Link direto do Google Drive
+    url = "https://drive.google.com/drive/folders/1vRtm4CJWo5oDrsMn002yso07RJcSTvnv?usp=drive_link"
+    response = requests.get(url)
+    response.raise_for_status()
+
+    # Carregar modelo a partir do conteúdo baixado
+    model = joblib.load(BytesIO(response.content))
     model_name = "xgboost.pkl"
     return model, model_name
+
 
 
 test_df, results_df = load_data()
