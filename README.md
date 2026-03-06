@@ -77,6 +77,8 @@ credit-scoring-analysis/
 
 ---
 
+
+
 ## 🚀 Como Executar
 
 ### 1. Clone o repositório
@@ -130,11 +132,19 @@ jupyter notebook
 - [x] Documentação
 
 ### Semana 3: Feature Engineering (Próxima)
-- [ ] Criar features derivadas
-- [ ] Encoding de categóricas
-- [ ] Scaling/normalização
-- [ ] Seleção de features
-- [ ] Train/test split
+- [x] **Encoding:** transformação de variáveis categóricas em formato numérico
+- [x] **Scaling:** geração de 3 versões do dataset (`no_scale`, `standardized`, `normalized`)
+- [x] **Seleção de Features:** redução para ~40 variáveis mais relevantes após análise
+- [x] **Split:** divisão estratificada em treino/teste (80/20)
+- [x] **Balanceamento:** aplicação de SMOTE apenas no treino
+      
+#### 📊 Datasets Finais
+data/final/
+├── no_scale_train_balanced.csv       # Para Random Forest, XGBoost
+├── standardized_train_balanced.csv   # Para Logistic Regression
+├── normalized_train_balanced.csv     # Para Neural Networks
+├── [versão]_test.csv                 # Sempre usar para avaliação
+└── [versão]_train_original.csv       # Opcional para comparação
 
 ### Semana 4: Modelagem
 - [ ] Baseline model
@@ -178,9 +188,46 @@ Decisão: manter como variável crítica no score.]
 - `Comprometimento da renda → valores acima de 100% truncados e sinalizados com comprometimento_outlier_flag.`
 `(Insight: flags não discriminam risco isoladamente (IV ≈ 0), mas são úteis para governança e podem ser exploradas em interações.)`
 
+🔑 Principais Insights da Semana 3
+- `Feature Engineering: criação de mais de 60 novas variáveis aumentou a capacidade do modelo de capturar relações complexas entre renda, dívidas e histórico de crédito.`
+
+- `Encoding & Scaling: diferentes versões do dataset permitem testar modelos variados (Logistic Regression, Random Forest, Neural Networks) sem perda de consistência.`
+
+- `Seleção de Features: redução para ~40 variáveis mais relevantes garante modelos mais enxutos, interpretáveis e com menor risco de overfitting.`
+
+- `Balanceamento com SMOTE: corrigiu a desproporção entre classes, aumentando a representatividade de clientes inadimplentes no treino e melhorando a robustez dos modelos.`
+
+- `Preparação Final: datasets prontos e documentados, com versões balanceadas e originais, asseguram comparações justas na etapa de modelagem.`
 
 
 ---
+✅ Semana 4: Modelagem - COMPLETA!
+Modelos Desenvolvidos
+✅ Logistic Regression (Baseline) – AUC: 0.7195
+
+✅ Random Forest – AUC: 0.8012
+
+✅ XGBoost – AUC: 0.8427
+
+✅ LightGBM – AUC: 0.8572
+
+✅ Modelo Final Otimizado (LightGBM Tuned) – AUC: 0.8572, KS: 0.5609
+
+Melhoria Alcançada
+Baseline: 0.7195
+
+Final: 0.8572
+
+Ganho Relativo: +19.13%
+
+Próxima Semana
+Semana 5: Dashboard e Apresentação Final
+
+Construção de dashboard interativo (Streamlit).
+
+Preparação da apresentação executiva para a Quod.
+
+Consolidação do portfólio no GitHub.
 
 ## 📧 Contato
 
