@@ -340,7 +340,7 @@ st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #7f8c8d; padding: 20px;'>
     <p><strong>Credit Scoring Dashboard</strong></p>
-    <p>Desenvolvido para Quod DataTech | Projeto de Machine Learning</p>
-    <p>📧 seuemail@dominio.com | 💼 linkedin.com/in/seulinkedin | 🐙 github.com/seugithub</p>
+    <p>Desenvolvido para: Quod DataTech | Projeto de Machine Learning</p>
+    <p>📧 wesleyat@outlook.com | 💼 https://www.linkedin.com/in/wesleymartinsdados/ | 🐙 https://github.com/wesleymartins95</p>
 </div>
 """, unsafe_allow_html=True)
