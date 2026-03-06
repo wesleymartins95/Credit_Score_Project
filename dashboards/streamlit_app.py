@@ -49,7 +49,7 @@ def load_model():
 
     files = {
         "xgboost.pkl": "1YY2rI1lpuyBZ9IJ5yymENjcP26J89dqA",
-        "lightgbm.pkl": "1UJEWaVwzJlw4h2g-v1mVvE1Cj05vVjZQ",
+        "lightgbm.pkl": "1UJEWaVwzJlw4h2g-v1mVvE1Cj05jVjZQ",
         "log_reg.pkl": "1lCnFQDa7uD05n9j73NQN-c3X9D3_s5d4",
         "log_reg_pipeline.pkl": "1XOuB8YbzbCiIILmZTGGGED0JXPFEn501",
         "df_woe.pkl": "1N4zteAuLjqxzfc3dcpyLuEcZkJUUGqlW",
