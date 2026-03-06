@@ -43,10 +43,10 @@ def load_data():
 
 @st.cache_resource
 def load_model():
-    import requests, joblib
+    import requests
+    import joblib
     from io import BytesIO
 
-    # IDs dos arquivos no Google Drive
     files = {
         "xgboost.pkl": "1YY2rI1lpuyBZ9IJ5yymENjcP26J89dqA",
         "lightgbm.pkl": "1UJEWaVwzJlw4h2g-v1mVvE1Cj05vVjZQ",
@@ -57,13 +57,19 @@ def load_model():
     }
 
     models = {}
+
     for name, fid in files.items():
-        url = f"https://drive.google.com/uc?id={fid}"
+
+        url = f"https://drive.google.com/uc?export=download&id={fid}"
+
         response = requests.get(url)
-        response.raise_for_status()
+
+        if response.status_code != 200:
+            st.error(f"Erro ao baixar {name}")
+            st.stop()
+
         models[name] = joblib.load(BytesIO(response.content))
 
-    # Retorna todos os modelos em um dicionário
     return models
 
 # Uso no app
