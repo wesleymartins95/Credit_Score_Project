@@ -14,5 +14,5 @@ joblib
 scipy
 pillow
 requests
-altair
+altair==4.2.2
 
