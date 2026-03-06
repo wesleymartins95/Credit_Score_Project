@@ -35,8 +35,8 @@ page = st.sidebar.radio(
 # Carregar dados e modelo
 @st.cache_data
 def load_data():
-    test_df = pd.read_csv(r"C:\Users\wesle\anaconda3\envs\Credit_Score_Project\data\final\no_scale_test.csv")
-    results_df = pd.read_csv(r"C:\Users\wesle\anaconda3\envs\Credit_Score_Project\reports\model_results.csv")
+    test_df = pd.read_csv("data/final/no_scale_test.csv")
+    results_df = pd.read_csv("reports\model_results.csv")
     return test_df, results_df
 
 
