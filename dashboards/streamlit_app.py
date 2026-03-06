@@ -36,7 +36,7 @@ page = st.sidebar.radio(
 @st.cache_data
 def load_data():
     test_df = pd.read_csv("data/final/no_scale_test.csv")
-    results_df = pd.read_csv("reports\model_results.csv")
+    results_df = pd.read_csv("reports/model_results.csv")
     return test_df, results_df
 
 
