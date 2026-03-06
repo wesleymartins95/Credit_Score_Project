@@ -40,16 +40,13 @@ def load_data():
     return test_df, results_df
 
 
-# Função genérica para baixar e carregar arquivos .pkl do Google Drive
-def load_from_drive(file_id, name):
-    url = f"https://drive.google.com/uc?id={file_id}"
-    response = requests.get(url)
-    response.raise_for_status()
-    obj = joblib.load(BytesIO(response.content))
-    return obj, name
 
 @st.cache_resource
-def load_all_models():
+def load_model():
+    import requests, joblib
+    from io import BytesIO
+
+    # IDs dos arquivos no Google Drive
     files = {
         "xgboost.pkl": "1YY2rI1lpuyBZ9IJ5yymENjcP26J89dqA",
         "lightgbm.pkl": "1UJEWaVwzJlw4h2g-v1mVvE1Cj05vVjZQ",
@@ -61,18 +58,17 @@ def load_all_models():
 
     models = {}
     for name, fid in files.items():
-        obj, _ = load_from_drive(fid, name)
-        models[name] = obj
+        url = f"https://drive.google.com/uc?id={fid}"
+        response = requests.get(url)
+        response.raise_for_status()
+        models[name] = joblib.load(BytesIO(response.content))
 
+    # Retorna todos os modelos em um dicionário
     return models
 
 # Uso no app
 test_df, results_df = load_data()
-models = load_all_models()
-
-# Exemplo: acessar o modelo XGBoost
-model = models["xgboost.pkl"]
-model_name = "xgboost.pkl"
+models = load_model()
 
 
 # Variáveis principais
